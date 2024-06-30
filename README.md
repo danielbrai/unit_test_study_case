@@ -23,4 +23,18 @@ sua academia, num reino conhecido como ***Brasil***, há um clã de estudiosos d
 corrigir o artefato místico produzido pelo jovem, tornando-o plenamente funcional.
 
 ### O Que se sabe sobre o artefato (ou o que o sistema faz...)
-O sistema deveria ser entregue por fases. Para esta primeira fase, 
+O sistema deveria ser entregue por fases. Para esta primeira fase, o que se deseja é que duas funcionalidades sejam 
+implementadas:
+
+1. **Inicialização de um _Rastreador de Treino_, a partir de uma lista de exercícios pré-definida**
+</br>
+Quando o usuário sinalizar o início de um novo treino, o sistema deverá criar o rastreador a partir de uma lista 
+pré-definida de exercícios, que serão cadastradas pelo professor. Este rastreador é quem manterá o registro dos 
+exercícios executados, e deverá ser inicializado apontando para o primeiro exercício sinalizado pelo professor no
+programa de treino.
+
+2. **Contagem "automática" da execução do exercício**
+</br>
+Sempre que o usuário sinalizar que finalizou a execução de uma série, o sistema deverá contabilizar esta execução e
+incrementar o registro no "rastreador"; caso a execução se iguale ao limite definido pelo professor que criou o treino,
+o rastreador deverá apontar para o próximo exercício do programa de treino, iniciando o registro de suas execuções.
