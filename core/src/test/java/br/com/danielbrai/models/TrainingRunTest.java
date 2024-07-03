@@ -1,7 +1,11 @@
 package br.com.danielbrai.models;
 
-import br.com.danielbrai.exceptions.TrainingAlreadyInitializedException;
-import br.com.danielbrai.exceptions.TrainingReachedTheEndException;
+import br.com.danielbrai.core.exceptions.TrainingAlreadyInitializedException;
+import br.com.danielbrai.core.exceptions.TrainingReachedTheEndException;
+import br.com.danielbrai.core.models.Exercise;
+import br.com.danielbrai.core.models.ExerciseSetup;
+import br.com.danielbrai.core.models.Program;
+import br.com.danielbrai.core.models.TrainingRun;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -60,15 +64,15 @@ class TrainingRunTest {
 
         List<ExerciseSetup> exerciseSetupList = Arrays.asList(supinoCanadenceSetup, peckDeckSetup);
 
-        TrainingProgram trainingProgram = TrainingProgram.builder()
+        Program program = Program.builder()
                 .exercises(exerciseSetupList)
                 .startedAt(LocalDate.of(2024, 6, 27))
                 .id(1L)
                 .build();
 
-        this.trainingRun.startTraining(trainingProgram);
+        this.trainingRun.startTraining(program);
 
-        assertThrows(TrainingAlreadyInitializedException.class, () -> this.trainingRun.startTraining(trainingProgram));
+        assertThrows(TrainingAlreadyInitializedException.class, () -> this.trainingRun.startTraining(program));
         assertEquals(0, this.trainingRun.getExerciseRun().getHead().getCurrentExecution());
 
     }
@@ -111,13 +115,13 @@ class TrainingRunTest {
 
         List<ExerciseSetup> exerciseSetupList = Arrays.asList(supinoCanadenceSetup, peckDeckSetup);
 
-        TrainingProgram trainingProgram = TrainingProgram.builder()
+        Program program = Program.builder()
                 .exercises(exerciseSetupList)
                 .startedAt(LocalDate.of(2024, 6, 27))
                 .id(1L)
                 .build();
 
-        this.trainingRun.startTraining(trainingProgram);
+        this.trainingRun.startTraining(program);
 
         /*
          * ACT or WHEN
@@ -175,13 +179,13 @@ class TrainingRunTest {
 
         List<ExerciseSetup> exerciseSetupList = Arrays.asList(supinoCanadenceSetup, peckDeckSetup);
 
-        TrainingProgram trainingProgram = TrainingProgram.builder()
+        Program program = Program.builder()
                 .exercises(exerciseSetupList)
                 .startedAt(LocalDate.of(2024, 6, 27))
                 .id(1L)
                 .build();
 
-        this.trainingRun.startTraining(trainingProgram);
+        this.trainingRun.startTraining(program);
         this.trainingRun.addExecutionToCurrentExercise();
 
         /*
@@ -239,13 +243,13 @@ class TrainingRunTest {
 
         List<ExerciseSetup> exerciseSetupList = Arrays.asList(supinoCanadenceSetup, peckDeckSetup);
 
-        TrainingProgram trainingProgram = TrainingProgram.builder()
+        Program program = Program.builder()
                 .exercises(exerciseSetupList)
                 .startedAt(LocalDate.of(2024, 6, 27))
                 .id(1L)
                 .build();
 
-        this.trainingRun.startTraining(trainingProgram);
+        this.trainingRun.startTraining(program);
         this.trainingRun.addExecutionToCurrentExercise();
         this.trainingRun.addExecutionToCurrentExercise();
         this.trainingRun.addExecutionToCurrentExercise();
@@ -294,13 +298,13 @@ class TrainingRunTest {
 
         List<ExerciseSetup> exerciseSetupList = Collections.singletonList(supinoCanadenceSetup);
 
-        TrainingProgram trainingProgram = TrainingProgram.builder()
+        Program program = Program.builder()
                 .exercises(exerciseSetupList)
                 .startedAt(LocalDate.of(2024, 6, 27))
                 .id(1L)
                 .build();
 
-        this.trainingRun.startTraining(trainingProgram);
+        this.trainingRun.startTraining(program);
         this.trainingRun.addExecutionToCurrentExercise();
         this.trainingRun.addExecutionToCurrentExercise();
         this.trainingRun.addExecutionToCurrentExercise();
